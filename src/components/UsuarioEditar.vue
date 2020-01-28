@@ -2,20 +2,28 @@
   <div class="componente">
     <h2>Alterar os Dados de Usuário</h2>
     <p>Edite as informações</p>
-    <p>Idade do usuário: {{idade}}</p>
+    <p>Idade do usuário: {{idadeUsuario}}</p>
     <button @click="alterarIdade">Alterar Idade</button>
   </div>
 </template>
 
 <script>
+import barramento from "@/barramento";
+
 export default {
   props: {
     idade: Number
   },
+  data() {
+    return {
+      idadeUsuario: this.idade
+    };
+  },
   methods: {
     alterarIdade() {
-      //this.idade = 33;
-      this.$emit("idadeMudou", 33);
+      this.idadeUsuario++;
+      //this.$emit("idadeMudou", 33);
+      barramento.$emit("idadeMudou", this.idadeUsuario);
     }
   }
 };
