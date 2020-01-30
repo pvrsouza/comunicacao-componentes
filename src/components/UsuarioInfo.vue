@@ -40,9 +40,12 @@ export default {
     }
   },
   created() {
-    barramento.$on("idadeMudou", idade => {
+    /*barramento.$on("idadeMudou", idade => {
       this.idadeUsuario = idade;
-    });
+    });*/
+    barramento.quandoIdadeMudar(idade => {
+      this.idadeUsuario = idade
+    })
   }
 };
 </script>
